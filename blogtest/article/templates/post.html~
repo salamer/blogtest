@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+{% block content %}
+                
+				<div class="posts">
+					<section class="post">
+
+					    <div class="pure-posts">
+					        <h1>{{ post.title }} </h1>
+					        
+					        <p><strong>category:</strong><a href="{% url 'category' post.category %}">
+					            {{ post.category }}
+					        </a></p>
+					        <h3 style="color:#6495ED"><strong style="color:black">editor: </strong><a href="{% url 'usershow' post.editor.id %}">{{ post.editor }}</a></h3>
+					        <h6 style="color:grey">{{ post.data_time }}</h6>
+					        {{ post.content|markdown:"STYLE" }}
+					        
+					    </div>
+
+					</section>
+				</div>
+			    <div class="pure-form">
+				
+			    </div>
+				<div class="post-description">
+					<h1 class="content-subhead">content</h1>
+					<form class="pure-form pure-form-aligned" method="post" action="">
+				    {% csrf_token %}
+					<fieldset>
+						<div class="pure-control-group">
+							
+							<textarea placeholder="passage" class="pure-input-2-3" name="comment" style="height:84px" {% if user.is_authenticated %}  {% else %}disabled="disabled" {% endif %}></textarea>
+						    
+						</div>
+						<div class="pure-controls">
+							<button type="submit" class="pure-button pure-button-primary">Submit</button>
+        					</div>
+					</fieldset>
+				
+				</form>
+					<div >
+						{% for c in comment %}
+						<div class="layout-item l-warp " style="border-top:1px;border-style:solid;border-color:#A9A9A9;border-left:0px;border-right:0px;border-bottom:0px">
+						    <h3>来自：<a href="{% url 'usershow' c.commentator %}">{{ c.commentator }}</a></h3>
+						    <h6 style="color:grey">{{ c.data_time }}</h6>
+						    
+						    {{ c.comment|markdown }}
+						    
+						 </div>   
+						{% endfor %}
+					</div>
+				</div>
+				
+{% endblock %}

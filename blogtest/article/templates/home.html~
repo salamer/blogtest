@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+                
+				<div class="posts">
+					
+					<div class="pure-post" >
+					    {% for p in post %}
+					    <div class="pure-posts layout-item l-warp" style="border-bottom:1px;border-style:solid;border-color:#A9A9A9;border-left:0px;border-right:0px;border-top:0px">
+					        <a href="{% url 'post' p.id %}">
+					            <h1>{{ p.title|upper }} </h1>
+					        </a>
+					        <a href="{% url 'category' p.category %}">
+					            {{ p.category }}
+					        </a>
+					        <h6 style="color:grey">{{ p.data_time }}</h6>
+					        
+					    </div>
+					    {% endfor %}
+					    <div class="pagination">
+					        <span class="step-links">
+					            {% if post.has_previous %}
+					            <a href="?page={{post.previous_page_number }}"><button class="pure-button pure-button-primary">previous</button></a>
+					            {% endif %}
+					            <span class='current'>
+					                now,it's No.{{ post.number }}page. and it got {{ post.paginator.num_pages }}page.
+					            </span>
+					            {% if post.has_next %}
+					                <a href="?page={{post.next_page_number }}">next</a>
+					            {% endif %}
+					</div>
+				</div>
+			
+{% endblock %}

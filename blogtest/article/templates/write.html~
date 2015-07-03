@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+			<div>
+			{% if errors %}
+			{{ errors }}
+			{% endif %}
+			</div>
+			<div class="pure-form">
+				<form class="pure-form pure-form-aligned" method="post" action="" >
+				    {% csrf_token %}
+					<fieldset>
+					    {% if user.is_authenticated %}
+						<div class="pure-control-group" >
+							<input type="text" name="title" class="pure-input-1" placeholder="title">
+							
+							<textarea placeholder="passage" class="pure-input-1" name="body" style="height:500px"></textarea>
+						    <input type="text" name="category" class="pure-input-1" placeholder="category">
+						</div>
+						<div class="pure-controls">
+							<button type="submit" class="pure-button pure-button-primary">Submit</button>
+        				</div>
+        				{% else %}
+        				<div class="pure-control-group" >
+							<input type="text" name="title" class="pure-input-1" placeholder="title" disabled="disabled">
+							
+							<textarea placeholder="passage" class="pure-input-1" name="body" style="height:500px" disabled="disabled"></textarea>
+						    <input type="text" name="category" class="pure-input-1" placeholder="category" disabled="disabled">
+						</div>
+						<button type="submit" class="pure-button pure-button-primary" disabled="disabled">Submit</button>
+						{% endif %}
+					</fieldset>
+				
+				</form>
+			</div>
+{% endblock %}
+			
+			
