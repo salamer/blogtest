@@ -6,8 +6,13 @@ a blog system bases on django
 
 使用：
 
-*pip install django
-*pip install django-bootstrap
-*pip install django-markdown-duex
-*cd blogtest
-*python manage.py runserver
+pip install django
+
+pip install django-bootstrap
+
+pip install django-markdown-duex
+
+cd blogtest
+
+python manage.py runserver
+
