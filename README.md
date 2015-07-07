@@ -6,6 +6,8 @@
 
 并且该项目使用了bootstrap的admin系统，添加了markdown富文本编辑器，使用的是mysql数据库，再使用前请建好mysql数据库，并在setting.py里做好相关配置。
 
+他的数据库在setting.py文件夹中，用的是mysql，请自行输入一个数据库
+
 使用前请先装好pip
 
 使用：
@@ -17,6 +19,10 @@ pip install django-bootstrap
 pip install django-markdown-duex
 
 cd blogtest
+
+python manage.py migrate
+
+python manage.py makemigrations
 
 python manage.py runserver
 
