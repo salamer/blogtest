@@ -22,6 +22,7 @@
 
     cd blogtest
 >创建数据库
+    
     python manage.py migrate
 
     python manage.py makemigrations
