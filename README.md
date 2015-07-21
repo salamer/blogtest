@@ -11,6 +11,12 @@
 >使用前请先装好pip
 
 #使用：
+>创建mysql数据库：
+
+    create database [databasename]  
+    
+>注意要把这个写在setting.py里面
+
 
 >安装扩展库和django
 
